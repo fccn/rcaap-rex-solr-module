@@ -1,0 +1,9 @@
+Name: Rex::WebService::Solr
+Description: Solr setup and manage module
+Author: Paulo Graça <paulo.graca@fccn.pt>
+License: GPLv3
+
+# Only if you have dependencies to other Rex Modules.
+Require:
+   - Rex::Lang::Java
+   - Rex::Logger

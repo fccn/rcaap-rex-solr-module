@@ -1,0 +1,5 @@
+SOLR_PID_DIR="<%= exists $conf->{'dir'} ? $conf->{'dir'} : '/var/lib/solr' %>"
+SOLR_HOME="<%= exists $conf->{'home'} ? $conf->{'home'} : '/var/lib/solr/data' %>"
+LOG4J_PROPS="<%= exists $conf->{'log4j_prop'} ? $conf->{'log4j_prop'} : '/var/lib/solr/log4j.properties' %>"
+SOLR_LOGS_DIR="<%= exists $conf->{'log_dir'} ? $conf->{'log_dir'} : '/var/lib/solr/logs' %>"
+SOLR_PORT="<%= exists $conf->{'port'} ? $conf->{'port'} : '8983' %>"
