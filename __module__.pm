@@ -66,13 +66,15 @@ task setup => sub {
 
 
 	#extract content to a tmp dir 
-	extract "$target_tgz", to => "$tmp_dir";
+	extract "$target_tgz", to => "$tmp_dir/dist";
 
-	die ('unable to find install_solr_service.sh file') unless (is_file("$tmp_dir/solr*/bin/install_solr_service.sh"));
+	# rename folder
+	mv ("$tmp_dir/dist/solr*", "$tmp_dir/solr");
+	die ("unable to find '$tmp_dir/solr/bin/install_solr_service.sh' file") unless (is_file($tmp_dir.'/solr/bin/install_solr_service.sh'));
 
 	Rex::Logger::info("Installing solr...");
 
-	run 'bash '.$tmp_dir.'/solr*/bin/install_solr_service.sh '.$target_tgz.' -d '.$solr_dir.' -f -n -p '.$solr_port;
+	run 'bash '.$tmp_dir.'/solr/bin/install_solr_service.sh '.$target_tgz.' -d '.$solr_dir.' -f -n -p '.$solr_port;
 	die('error installing solr service') unless ($? == 0);	
 	
 	file '/etc/default/solr.in.sh',
